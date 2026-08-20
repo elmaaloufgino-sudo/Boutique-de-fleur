@@ -3,142 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Boutique de Fleur | Premium Florist in Beirut</title>
-    <!-- Google Fonts for an elegant look -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Le Boutique de Fleur | Happy Florals in Beirut</title>
+    <!-- Google Fonts for a high-quality, elegant but happy look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- Styles & Colors --- */
+        /* --- Happy, Flowery Color Palette --- */
         :root {
-            --primary-green: #2c4c3b; 
-            --accent-gold: #d4a373;
-            --bg-light: #faf9f6;
-            --text-dark: #333333;
+            --leaf-green: #2d6a4f; 
+            --petal-pink: #ff8fa3;
+            --soft-bg: #fff0f3;
+            --white: #ffffff;
+            --text-dark: #2b2b2b;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-light);
+            background-color: var(--soft-bg);
             color: var(--text-dark);
             line-height: 1.6;
         }
 
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
+            color: var(--leaf-green);
         }
 
-        /* --- Navigation --- */
+        /* --- The Top Menu (Sticky Navigation) --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 143, 163, 0.2);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000; /* Keeps it on top of everything */
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-green);
+            color: var(--petal-pink);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* The Menu Links */
+        nav {
+            display: flex;
+            gap: 2rem;
         }
 
         nav a {
-            margin-left: 2rem;
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--leaf-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--accent-gold);
+            background-color: var(--petal-pink);
+            color: var(--white);
         }
 
         /* --- Hero Section --- */
         .hero {
-            height: 75vh;
-            /* Background image of beautiful flowers */
-            background: linear-gradient(rgba(44, 76, 59, 0.5), rgba(44, 76, 59, 0.7)), url('https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 80vh;
+            /* Using your storefront image as the welcoming background */
+            background: linear-gradient(rgba(255, 240, 243, 0.4), rgba(45, 106, 79, 0.6)), url('1000009988.webp') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #ffffff;
+            color: var(--white);
             padding: 0 20px;
         }
 
+        .hero-content {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 700px;
+        }
+
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            color: var(--petal-pink);
         }
 
         .hero-content p {
             font-size: 1.2rem;
+            color: var(--text-dark);
             margin-bottom: 2rem;
-            max-width: 600px;
-            margin-inline: auto;
-            font-weight: 300;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 35px;
-            background-color: var(--accent-gold);
-            color: #ffffff;
+            padding: 15px 40px;
+            background-color: var(--leaf-green);
+            color: var(--white);
             text-decoration: none;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            transition: background 0.3s;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s, background 0.3s;
         }
 
         .btn:hover {
-            background-color: #b58555;
+            background-color: #1b4332;
+            transform: scale(1.05);
+        }
+
+        /* --- About Us Section --- */
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            padding: 5rem 5%;
+            background-color: var(--white);
+            flex-wrap: wrap;
+        }
+
+        .about img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            max-width: 500px;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--petal-pink);
         }
 
         /* --- Featured Arrangements --- */
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin: 5rem 0 3rem;
-            color: var(--primary-green);
+            color: var(--leaf-green);
         }
 
         .products {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 3rem;
             padding: 0 5%;
             flex-wrap: wrap;
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
         }
 
         .card {
-            background: #ffffff;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 15px;
             overflow: hidden;
-            width: 320px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            width: 340px;
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.15);
             transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
         }
 
         .card img {
             width: 100%;
-            height: 280px;
+            height: 350px;
             object-fit: cover;
+            border-bottom: 5px solid var(--petal-pink);
         }
 
         .card-content {
@@ -147,97 +200,115 @@
         }
 
         .card-content h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-green);
         }
 
         .card-content p {
-            color: var(--accent-gold);
-            font-weight: 500;
-            font-size: 1.2rem;
+            color: var(--petal-pink);
+            font-weight: 600;
+            font-size: 1.4rem;
         }
 
         /* --- Footer --- */
         footer {
-            background: var(--primary-green);
-            color: #ffffff;
+            background: var(--leaf-green);
+            color: var(--white);
             text-align: center;
             padding: 4rem 5%;
         }
 
         footer h3 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: var(--accent-gold);
+            color: var(--petal-pink);
         }
 
         footer p {
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-            font-weight: 300;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
         }
 
         /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
             nav {
-                display: none; 
+                display: none; /* Can be updated to a hamburger menu later if needed */
             }
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- The Top Menu -->
     <header>
-        <a href="#" class="logo">Le Boutique de Fleur</a>
+        <a href="#" class="logo">🌸 Le Boutique de Fleur</a>
         <nav>
-            <a href="#">Home</a>
-            <a href="#shop">Our Bouquets</a>
+            <a href="#home">Home</a>
+            <a href="#about">Our Florists</a>
+            <a href="#shop">Bouquets</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Artisan Florals in the Heart of Beirut</h1>
-            <p>Fresh, elegant, and vibrant arrangements crafted daily in Achrafieh for all your special occasions.</p>
-            <a href="#shop" class="btn">View Collection</a>
+            <h1>Happiness in Every Petal</h1>
+            <p>Welcome to Achrafieh's most vibrant and joyful flower boutique. We bring high-quality, colorful arrangements straight to your doorstep.</p>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <!-- Using the photo of the florists at work -->
+        <img src="1000009989.jpg" alt="Our expert florists crafting a bouquet">
+        <div class="about-text">
+            <h2>Crafted with Love</h2>
+            <p>Every arrangement at Le Boutique de Fleur is hand-crafted by our passionate team. We source only the highest quality blooms to ensure your special moments are celebrated with vibrant, long-lasting color.</p>
         </div>
     </section>
 
     <!-- Featured Products Section -->
-    <h2 class="section-title" id="shop">Signature Arrangements</h2>
+    <h2 class="section-title" id="shop">Fresh Favorites</h2>
     <section class="products">
         
-        <!-- Product 1 -->
+        <!-- Product 1: The Pink & Purple Mix -->
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1548094891-c4ba474efd16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Red Roses Bouquet">
+            <img src="1000009995.jpg" alt="Pink and Purple Bouquet">
             <div class="card-content">
-                <h3>Classic Romance</h3>
-                <p>$45.00</p>
+                <h3>Vibrant Berry Burst</h3>
+                <p>$55.00</p>
             </div>
         </div>
 
-        <!-- Product 2 -->
+        <!-- Product 2: The Autumnal Mix -->
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1563241598-6323a77a9437?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mixed Spring Bouquet">
+            <img src="1000009987.webp" alt="Autumnal Bouquet">
             <div class="card-content">
-                <h3>Sassine Sunrise</h3>
-                <p>$60.00</p>
+                <h3>Golden Harvest</h3>
+                <p>$65.00</p>
             </div>
         </div>
 
-        <!-- Product 3 -->
+        <!-- Product 3: The Mini Vases -->
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Peonies">
+            <img src="1000009990.jpg" alt="Colorful Mini Vases">
             <div class="card-content">
-                <h3>Beirut Elegance</h3>
-                <p>$75.00</p>
+                <h3>Joyful Miniatures</h3>
+                <p>$25.00</p>
+            </div>
+        </div>
+        
+        <!-- Product 4: The White Lilies -->
+        <div class="card">
+            <img src="1000009996.jpg" alt="White Lilies and Roses">
+            <div class="card-content">
+                <h3>Classic Elegance</h3>
+                <p>$70.00</p>
             </div>
         </div>
 
@@ -249,7 +320,7 @@
         <p>📍 Sassine Square, Achrafieh, Beirut, Lebanon</p>
         <p>📞 +961 1 234 567</p>
         <p>✉️ hello@leboutiquedefleur.com</p>
-        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
             &copy; 2026 Le Boutique de Fleur. All rights reserved.
         </p>
     </footer>
