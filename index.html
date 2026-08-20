@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Boutique de Fleur | Happy Florals in Beirut</title>
-    <!-- Google Fonts for a high-quality, elegant but happy look -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- Happy, Flowery Color Palette --- */
         :root {
             --leaf-green: #2d6a4f; 
             --petal-pink: #ff8fa3;
@@ -35,7 +33,7 @@
             color: var(--leaf-green);
         }
 
-        /* --- The Top Menu (Sticky Navigation) --- */
+        /* --- Top Menu --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -45,7 +43,7 @@
             box-shadow: 0 4px 15px rgba(255, 143, 163, 0.2);
             position: sticky;
             top: 0;
-            z-index: 1000; /* Keeps it on top of everything */
+            z-index: 1000;
         }
 
         .logo {
@@ -53,12 +51,8 @@
             font-weight: 700;
             color: var(--petal-pink);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        /* The Menu Links */
         nav {
             display: flex;
             gap: 2rem;
@@ -82,8 +76,7 @@
         /* --- Hero Section --- */
         .hero {
             height: 80vh;
-            /* Using your storefront image as the welcoming background */
-            background: linear-gradient(rgba(255, 240, 243, 0.4), rgba(45, 106, 79, 0.6)), url('1000009988.webp') center/cover no-repeat;
+            background: linear-gradient(rgba(255, 240, 243, 0.4), rgba(45, 106, 79, 0.6)), url("unnamed (5).webp") center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -129,7 +122,7 @@
             transform: scale(1.05);
         }
 
-        /* --- About Us Section --- */
+        /* --- About Section --- */
         .about {
             display: flex;
             align-items: center;
@@ -171,7 +164,7 @@
             gap: 3rem;
             padding: 0 5%;
             flex-wrap: wrap;
-            margin-bottom: 6rem;
+            margin-bottom: 4rem;
         }
 
         .card {
@@ -210,6 +203,39 @@
             font-size: 1.4rem;
         }
 
+        /* --- Full Shop Gallery (All 10 Pictures) --- */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 6rem 5%;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-item p {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+            color: var(--leaf-green);
+        }
+
         /* --- Footer --- */
         footer {
             background: var(--leaf-green);
@@ -229,10 +255,9 @@
             font-size: 1.1rem;
         }
 
-        /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
             nav {
-                display: none; /* Can be updated to a hamburger menu later if needed */
+                display: none;
             }
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -242,13 +267,14 @@
 </head>
 <body>
 
-    <!-- The Top Menu -->
+    <!-- Top Menu -->
     <header>
         <a href="#" class="logo">🌸 Le Boutique de Fleur</a>
         <nav>
             <a href="#home">Home</a>
             <a href="#about">Our Florists</a>
-            <a href="#shop">Bouquets</a>
+            <a href="#shop">Featured</a>
+            <a href="#gallery">Full Gallery</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -262,10 +288,9 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (Using unnamed (1).jpg) -->
     <section id="about" class="about">
-        <!-- Using the photo of the florists at work -->
-        <img src="1000009989.jpg" alt="Our expert florists crafting a bouquet">
+        <img src="unnamed (1).jpg" alt="Our expert florists crafting a bouquet">
         <div class="about-text">
             <h2>Crafted with Love</h2>
             <p>Every arrangement at Le Boutique de Fleur is hand-crafted by our passionate team. We source only the highest quality blooms to ensure your special moments are celebrated with vibrant, long-lasting color.</p>
@@ -276,36 +301,32 @@
     <h2 class="section-title" id="shop">Fresh Favorites</h2>
     <section class="products">
         
-        <!-- Product 1: The Pink & Purple Mix -->
         <div class="card">
-            <img src="1000009995.jpg" alt="Pink and Purple Bouquet">
+            <img src="unnamed (2).jpg" alt="Pink and Purple Bouquet">
             <div class="card-content">
                 <h3>Vibrant Berry Burst</h3>
                 <p>$55.00</p>
             </div>
         </div>
 
-        <!-- Product 2: The Autumnal Mix -->
         <div class="card">
-            <img src="1000009987.webp" alt="Autumnal Bouquet">
+            <img src="unnamed (6).webp" alt="Autumnal Bouquet">
             <div class="card-content">
                 <h3>Golden Harvest</h3>
                 <p>$65.00</p>
             </div>
         </div>
 
-        <!-- Product 3: The Mini Vases -->
         <div class="card">
-            <img src="1000009990.jpg" alt="Colorful Mini Vases">
+            <img src="unnamed (3).jpg" alt="Colorful Mini Vases">
             <div class="card-content">
                 <h3>Joyful Miniatures</h3>
                 <p>$25.00</p>
             </div>
         </div>
         
-        <!-- Product 4: The White Lilies -->
         <div class="card">
-            <img src="1000009996.jpg" alt="White Lilies and Roses">
+            <img src="unnamed (4).jpg" alt="White Lilies and Roses">
             <div class="card-content">
                 <h3>Classic Elegance</h3>
                 <p>$70.00</p>
@@ -313,6 +334,22 @@
         </div>
 
     </section>
+
+    <!-- Full Shop Gallery Section (Showing All 10 Uploaded Images) -->
+    <h2 class="section-title" id="gallery">Shop & Studio Gallery</h2>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="unnamed (1).jpg" alt="Gallery Photo"><p>Our Expert Team</p></div>
+        <div class="gallery-item"><img src="unnamed (2).jpg" alt="Gallery Photo"><p>Berry Blend</p></div>
+        <div class="gallery-item"><img src="unnamed (3).jpg" alt="Gallery Photo"><p>Charming Mini Vases</p></div>
+        <div class="gallery-item"><img src="unnamed (4).jpg" alt="Gallery Photo"><p>Beirut Blooms</p></div>
+        <div class="gallery-item"><img src="unnamed (5).webp" alt="Gallery Photo"><p>Storefront View</p></div>
+        <div class="gallery-item"><img src="unnamed (6).webp" alt="Gallery Photo"><p>Autumn Elegance</p></div>
+        <div class="gallery-item"><img src="unnamed (5).jpg" alt="Gallery Photo"><p>Vibrant Assortment</p></div>
+        <div class="gallery-item"><img src="unnamed (6).jpg" alt="Gallery Photo"><p>Fresh Arrangements</p></div>
+        <!-- Extra placeholder spots if you want to feature specific angles -->
+        <div class="gallery-item"><img src="unnamed (2).jpg" alt="Gallery Photo"><p>Daily Selection</p></div>
+        <div class="gallery-item"><img src="unnamed (4).jpg" alt="Gallery Photo"><p>Signature Bouquet</p></div>
+    </div>
 
     <!-- Footer / Contact Info -->
     <footer id="contact">
