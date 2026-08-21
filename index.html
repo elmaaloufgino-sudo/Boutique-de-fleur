@@ -44,13 +44,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             background-color: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .logo {
@@ -127,7 +142,7 @@
 
         .sidebar a.nav-link:hover {
             color: var(--gold-dark);
-            transform: translateX(10px); /* Elegant slide effect on hover */
+            transform: translateX(10px);
         }
 
         /* --- Hero Section --- */
@@ -144,7 +159,7 @@
         .hero-content {
             background: rgba(255, 255, 255, 0.9);
             padding: 4rem 3rem;
-            border-radius: 4px; /* Sharper, more editorial edges */
+            border-radius: 4px; 
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
             max-width: 650px;
         }
@@ -191,7 +206,7 @@
             width: 100%;
             max-width: 400px;
             border-radius: 4px;
-            box-shadow: 15px 15px 0px var(--blush-pink); /* Delicate offset shadow */
+            box-shadow: 15px 15px 0px var(--blush-pink); 
         }
 
         .about-text {
@@ -276,7 +291,7 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.08); /* Slow, elegant zoom */
+            transform: scale(1.08); 
         }
 
         /* --- Footer --- */
@@ -299,23 +314,31 @@
             font-weight: 200;
         }
 
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.3rem; 
+            }
+            .brand-logo-img {
+                height: 40px;
+                width: 40px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content {
+                padding: 3rem 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header with Shiny Logo, SVG Icon & Hamburger Icon -->
+    <!-- Header with Custom Image Logo & Shiny Text -->
     <header>
-        <a href="#" class="logo" style="display: flex; align-items: center; gap: 15px;">
-            <!-- Abstract Cedar & Flower Vector Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="38" height="38">
-                <!-- Outer Gold Ring -->
-                <circle cx="50" cy="50" r="46" fill="none" stroke="var(--gold-dark)" stroke-width="2"/>
-                <!-- Delicate Cedar Branches -->
-                <path d="M50 25 L50 75 M38 40 L62 40 M30 55 L70 55 M35 70 L65 70" stroke="var(--forest-green)" stroke-width="3" stroke-linecap="round"/>
-                <!-- Rose Gold Flower Petals -->
-                <path d="M50 75 C 30 65, 35 35, 50 50 C 65 35, 70 65, 50 75 Z" fill="rgba(197, 160, 89, 0.5)"/>
-            </svg>
-            Le Boutique de Fleur
+        <a href="#" class="brand-container">
+            <img src="1000010048.png" alt="Le Boutique de Fleur Logo" class="brand-logo-img">
+            <span class="logo">Le Boutique de Fleur</span>
         </a>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     </header>
