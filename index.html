@@ -51,7 +51,16 @@
         }
 
         .brand-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .brand-logo-img { height: 50px; width: 50px; border-radius: 50%; box-shadow: 0 0 15px rgba(226, 192, 115, 0.4); }
+        
+        .brand-logo-img { 
+            height: 55px; 
+            width: 55px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            object-position: center; 
+            box-shadow: 0 0 15px rgba(226, 192, 115, 0.4); 
+        }
+        
         .logo { font-size: 1.5rem; font-family: 'Cinzel', serif; color: var(--text-light); text-transform: uppercase; }
 
         .header-icons { display: flex; gap: 1.5rem; align-items: center; }
@@ -76,7 +85,6 @@
             display: flex; flex-direction: column; padding: 4rem 2.5rem;
         }
 
-        /* Menu slides from left, Cart slides from right */
         #menu-sidebar { left: 0; transform: translateX(-100%); }
         #menu-sidebar.active { transform: translateX(0); }
         
@@ -87,7 +95,6 @@
             position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--gold-glow); cursor: pointer; font-weight: 200;
         }
 
-        /* Menu Links - Smaller, thinner, elegant */
         .nav-link {
             text-decoration: none; font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-light);
             margin: 1.2rem 0; letter-spacing: 3px; text-transform: uppercase; font-weight: 300;
@@ -148,7 +155,7 @@
         .cat-card:hover .cat-info { transform: translateY(-10px); border: 1px solid var(--gold-glow); }
         .cat-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
 
-        /* --- Store Modal (The Pop-up with 4 items) --- */
+        /* --- Store Modal --- */
         #store-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px);
             z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.4s;
@@ -179,7 +186,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             header { top: 10px; width: 96%; left: 2%; padding: 0.5rem 5%; }
-            .logo { font-size: 1rem; }
+            .logo { font-size: 0.85rem; } /* Shrunk slightly to fit the full name and cart nicely */
             .sidebar { width: 100%; }
         }
     </style>
@@ -190,7 +197,7 @@
     <header>
         <a href="#" class="brand-container">
             <img src="1787309510667.png" alt="Logo" class="brand-logo-img">
-            <span class="logo">Le Boutique</span>
+            <span class="logo">Le Boutique de Fleur</span>
         </a>
         <div class="header-icons">
             <div class="icon-btn" onclick="toggleCart()">🛒<span id="cart-badge">0</span></div>
@@ -272,11 +279,9 @@
 
     <!-- E-Commerce Application Logic -->
     <script>
-        // Sidebar Toggles
         function toggleMenu() { document.getElementById('menu-sidebar').classList.toggle('active'); }
         function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
 
-        // Product Data Database (Using your uploaded images)
         const productsDB = {
             'classic': [
                 { id: 1, name: 'White Lilies', price: 70, img: 'unnamed (4).jpg' },
@@ -306,7 +311,6 @@
 
         const categoryTitles = { 'classic': 'The Classics', 'vibrant': 'Vibrant Edge', 'autumn': 'Golden Aura', 'petite': 'Petite Joy' };
 
-        // Modal Logic
         function openModal(category) {
             document.getElementById('modal-title').innerText = categoryTitles[category];
             const products = productsDB[category];
@@ -318,7 +322,6 @@
                         <img src="${p.img}" alt="${p.name}">
                         <h4>${p.name}</h4>
                         <div class="price">$${p.price}</div>
-                        <!-- Using JSON stringify to pass the product object properly -->
                         <button class="add-btn" onclick='addToCart(${JSON.stringify(p)})'>Add to Cart</button>
                     </div>
                 `;
@@ -332,17 +335,12 @@
             document.getElementById('store-modal').classList.remove('active');
         }
 
-        // Cart Logic
         let cart = [];
 
         function addToCart(product) {
             cart.push(product);
             updateCartUI();
-            
-            // Pop out the cart so the user sees it was added!
             document.getElementById('cart-sidebar').classList.add('active');
-            
-            // Optional: Auto close the category modal when they buy something
             closeModal(); 
         }
 
