@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Boutique de Fleur | Premium Florist</title>
-    <!-- Elegant Fonts: Playfair for delicate headings, Montserrat for clean, modern text -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <title>Le Boutique de Fleur | High-End Florist</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* --- Luxury Color Palette --- */
+        /* --- 8K 3D Luxury Theme Variables --- */
         :root {
-            --forest-green: #24362b; 
-            --blush-pink: #f4e1e1;
-            --cream-bg: #fdfbf7;
-            --white: #ffffff;
-            --text-main: #333333;
-            --gold-light: #e6cca5;
-            --gold-dark: #c5a059;
+            --bg-dark: #070b09; /* Deep, rich black-green */
+            --gold-glow: #e2c073;
+            --glass-bg: rgba(20, 30, 25, 0.4);
+            --glass-border: rgba(226, 192, 115, 0.2);
+            --text-light: #f4f4f4;
         }
 
         * {
@@ -27,30 +25,36 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--cream-bg);
-            color: var(--text-main);
-            line-height: 1.8;
-            font-weight: 300;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            /* Adds a subtle texture to the background */
+            background-image: radial-gradient(circle at 50% 0%, #15221b 0%, var(--bg-dark) 70%);
+            line-height: 1.6;
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--forest-green);
-            font-weight: 400;
+            font-family: 'Cinzel', serif; /* Very cinematic, high-end font */
+            color: var(--gold-glow);
+            letter-spacing: 2px;
         }
 
-        /* --- Header & Shiny Logo --- */
+        /* --- 3D Glass Header --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            background-color: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
+            padding: 0.8rem 5%;
+            position: fixed;
+            top: 15px;
+            left: 5%;
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .brand-container {
@@ -61,94 +65,30 @@
         }
 
         .brand-logo-img {
-            height: 55px;
-            width: 55px;
+            height: 50px;
+            width: 50px;
             border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(226, 192, 115, 0.4);
         }
 
         .logo {
-            font-size: 2.2rem;
-            font-weight: 400;
-            font-style: italic;
-            text-decoration: none;
-            letter-spacing: 1px;
-            /* The Shiny Rose-Gold Effect */
-            background: linear-gradient(120deg, var(--gold-dark) 0%, #fff8e7 50%, var(--gold-dark) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* --- Slide-Out Sidebar Menu --- */
-        .menu-icon {
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--forest-green);
-            transition: color 0.3s ease;
-        }
-
-        .menu-icon:hover {
-            color: var(--gold-dark);
-        }
-
-        .sidebar {
-            height: 100vh;
-            width: 320px;
-            position: fixed;
-            top: 0;
-            right: -350px; /* Hidden by default */
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: -5px 0 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(15px);
-            z-index: 2000;
-            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 4rem 2rem;
-        }
-
-        .sidebar.active {
-            right: 0; /* Slides in */
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2.5rem;
-            cursor: pointer;
-            color: var(--forest-green);
-            text-decoration: none;
-            font-weight: 200;
-        }
-
-        .sidebar a.nav-link {
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: var(--forest-green);
-            margin: 1rem 0;
-            transition: color 0.3s ease, transform 0.3s ease;
+            font-family: 'Cinzel', serif;
+            color: var(--text-light);
+            text-transform: uppercase;
         }
 
-        .sidebar a.nav-link:hover {
-            color: var(--gold-dark);
-            transform: translateX(10px);
+        .menu-icon {
+            font-size: 1.5rem;
+            color: var(--gold-glow);
+            cursor: pointer;
         }
 
-        /* --- Hero Section --- */
+        /* --- Parallax Hero Section --- */
         .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(253, 251, 247, 0.3), rgba(36, 54, 43, 0.5)), url("unnamed (5).webp") center/cover no-repeat;
+            height: 100vh;
+            /* High-res background with parallax attachment */
+            background: linear-gradient(to bottom, rgba(7, 11, 9, 0.3), var(--bg-dark)), url("unnamed (5).webp") center/cover fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,278 +96,213 @@
             padding: 0 20px;
         }
 
-        .hero-content {
-            background: rgba(255, 255, 255, 0.9);
+        .hero-glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
             padding: 4rem 3rem;
-            border-radius: 4px; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            max-width: 650px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.2);
+            max-width: 700px;
+            transform: translateY(20px);
         }
 
-        .hero-content h1 {
-            font-size: 3.2rem;
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            letter-spacing: 1px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: #d1d1d1;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 45px;
-            background-color: var(--forest-green);
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: background 0.4s ease;
+        /* --- Compact 4-Category Section --- */
+        .categories-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .btn:hover {
-            background-color: var(--gold-dark);
-        }
-
-        /* --- About Section --- */
-        .about {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5rem;
-            padding: 7rem 5%;
-            flex-wrap: wrap;
-        }
-
-        .about img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 4px;
-            box-shadow: 15px 15px 0px var(--blush-pink); 
-        }
-
-        .about-text {
-            max-width: 450px;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- Featured Arrangements --- */
         .section-title {
             text-align: center;
             font-size: 2.8rem;
-            margin: 4rem 0 3rem;
-            letter-spacing: 1px;
+            margin-bottom: 4rem;
+            text-shadow: 0 5px 20px rgba(226, 192, 115, 0.2);
         }
 
-        .products {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            padding: 0 5%;
-            flex-wrap: wrap;
-            margin-bottom: 5rem;
-        }
-
-        .card {
-            background: var(--white);
-            width: 300px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            transition: transform 0.4s ease;
-            padding-bottom: 1.5rem;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem 1rem 0;
-            text-align: center;
-        }
-
-        .card-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .card-content p {
-            color: var(--gold-dark);
-            font-weight: 400;
-            font-size: 1.1rem;
-        }
-
-        /* --- Full Gallery --- */
-        .gallery-container {
+        .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            padding: 0 5% 6rem 5%;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .gallery-item {
-            overflow: hidden;
+        /* The 3D Category Cards */
+        .cat-card {
             position: relative;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .gallery-item img {
+        /* 3D Hover Physics */
+        .cat-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(226, 192, 115, 0.3);
+            border: 1px solid var(--glass-border);
+            z-index: 2;
+        }
+
+        .cat-card img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
-            display: block;
+            transition: transform 0.7s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.08); 
+        .cat-card:hover img {
+            transform: scale(1.1); /* Image zooms in slightly on hover */
+        }
+
+        /* Glass Text Overlay */
+        .cat-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(10, 15, 12, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+
+        .cat-card:hover .cat-info {
+            transform: translateY(-10px);
+            background: rgba(10, 15, 12, 0.85);
+            border: 1px solid var(--gold-glow);
+        }
+
+        .cat-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .cat-info p {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* --- Footer --- */
         footer {
-            background: var(--forest-green);
-            color: var(--white);
+            background: #040705;
             text-align: center;
-            padding: 5rem 5%;
+            padding: 4rem 5%;
+            border-top: 1px solid #1a261f;
         }
 
         footer h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--gold-light);
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         footer p {
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            font-weight: 200;
+            font-size: 0.9rem;
+            color: #888;
         }
 
-        /* --- Mobile Responsiveness --- */
+        /* --- Mobile Tweaks --- */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 1.3rem; 
-            }
-            .brand-logo-img {
-                height: 40px;
-                width: 40px;
-            }
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            .hero-content {
-                padding: 3rem 1.5rem;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            header { top: 10px; width: 96%; left: 2%; padding: 0.5rem 5%; }
+            .logo { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header with Custom Image Logo & Shiny Text -->
+    <!-- Sleek 3D Glass Header -->
     <header>
         <a href="#" class="brand-container">
             <img src="1787309510667.png" alt="Le Boutique de Fleur Logo" class="brand-logo-img">
             <span class="logo">Le Boutique de Fleur</span>
         </a>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <!-- Kept the menu icon so you can hook up the sidebar later if needed -->
+        <div class="menu-icon">&#9776;</div>
     </header>
 
-    <!-- Slide-Out Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
-        <a href="#home" class="nav-link" onclick="toggleMenu()">Home</a>
-        <a href="#about" class="nav-link" onclick="toggleMenu()">Our Atelier</a>
-        <a href="#shop" class="nav-link" onclick="toggleMenu()">Signature Bouquets</a>
-        <a href="#gallery" class="nav-link" onclick="toggleMenu()">Gallery</a>
-        <a href="#contact" class="nav-link" onclick="toggleMenu()">Contact</a>
-    </div>
-
-    <!-- Hero Section -->
+    <!-- Parallax Hero -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Delicate & Timeless</h1>
-            <p>Discover Achrafieh's most luxurious floral design studio. We curate breathtaking, bespoke arrangements for life's most beautiful moments.</p>
-            <a href="#shop" class="btn">View Collection</a>
+        <div class="hero-glass-panel">
+            <h1>Masterpiece Florals</h1>
+            <p>Exclusive, high-end botanical designs curated in the heart of Beirut. Experience floral artistry like never before.</p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <img src="unnamed (1).jpg" alt="Artisan Florists">
-        <div class="about-text">
-            <h2>The Art of Floristry</h2>
-            <p>Every stem at Le Boutique de Fleur is hand-selected for its beauty and vitality. Our expert florists blend classic elegance with modern design to create arrangements that speak to the heart.</p>
-        </div>
-    </section>
-
-    <!-- Featured Products Section -->
-    <h2 class="section-title" id="shop">Signature Collection</h2>
-    <section class="products">
+    <!-- 4 Compact Categories Section -->
+    <section class="categories-section">
+        <h2 class="section-title">The Collections</h2>
         
-        <div class="card">
-            <img src="unnamed (2).jpg" alt="Pink and Purple Bouquet">
-            <div class="card-content">
-                <h3>Vibrant Berry</h3>
-                <p>$55.00</p>
+        <div class="category-grid">
+            
+            <!-- Category 1: Classic Whites -->
+            <div class="cat-card">
+                <img src="unnamed (4).jpg" alt="Classic White Flowers">
+                <div class="cat-info">
+                    <h3>The Classics</h3>
+                    <p>Timeless Elegance</p>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="unnamed (6).webp" alt="Autumnal Bouquet">
-            <div class="card-content">
-                <h3>Golden Harvest</h3>
-                <p>$65.00</p>
+            <!-- Category 2: Vibrant Blooms -->
+            <div class="cat-card">
+                <img src="unnamed (2).jpg" alt="Vibrant Pink and Purple Flowers">
+                <div class="cat-info">
+                    <h3>Vibrant Edge</h3>
+                    <p>Bold & Beautiful</p>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="unnamed (4).jpg" alt="White Lilies">
-            <div class="card-content">
-                <h3>Classic Elegance</h3>
-                <p>$70.00</p>
+            <!-- Category 3: Autumn Harvest -->
+            <div class="cat-card">
+                <img src="unnamed (6).webp" alt="Autumnal Bouquet">
+                <div class="cat-info">
+                    <h3>Golden Aura</h3>
+                    <p>Rich Autumn Tones</p>
+                </div>
             </div>
-        </div>
 
+            <!-- Category 4: Miniature Vases -->
+            <div class="cat-card">
+                <img src="unnamed (3).jpg" alt="Miniature Vases">
+                <div class="cat-info">
+                    <h3>Petite Joy</h3>
+                    <p>Curated Assortments</p>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <!-- Full Shop Gallery -->
-    <h2 class="section-title" id="gallery">Our Visual Diary</h2>
-    <div class="gallery-container">
-        <div class="gallery-item"><img src="unnamed (5).webp" alt="Gallery Photo"></div>
-        <div class="gallery-item"><img src="unnamed (3).jpg" alt="Gallery Photo"></div>
-        <div class="gallery-item"><img src="unnamed (5).jpg" alt="Gallery Photo"></div>
-        <div class="gallery-item"><img src="unnamed (6).jpg" alt="Gallery Photo"></div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- Minimalist Footer -->
+    <footer>
         <h3>Le Boutique de Fleur</h3>
-        <p>Sassine Square, Achrafieh, Beirut</p>
-        <p>+961 1 234 567</p>
-        <p>hello@leboutiquedefleur.com</p>
-        <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.5;">
+        <p>Sassine Square, Achrafieh, Beirut | +961 1 234 567</p>
+        <p style="margin-top: 2rem; font-size: 0.75rem; opacity: 0.4;">
             &copy; 2026 Le Boutique de Fleur. All rights reserved.
         </p>
     </footer>
-
-    <!-- Simple JavaScript to make the Sidebar Menu work -->
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('active');
-        }
-    </script>
 
 </body>
 </html>
