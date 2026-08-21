@@ -5,37 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Boutique de Fleur | High-End Florist</title>
     <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         /* --- 8K 3D Luxury Theme Variables --- */
         :root {
-            --bg-dark: #070b09; /* Deep, rich black-green */
+            --bg-dark: #070b09; 
             --gold-glow: #e2c073;
             --glass-bg: rgba(20, 30, 25, 0.4);
             --glass-border: rgba(226, 192, 115, 0.2);
             --text-light: #f4f4f4;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
-            /* Adds a subtle texture to the background */
             background-image: radial-gradient(circle at 50% 0%, #15221b 0%, var(--bg-dark) 70%);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            font-family: 'Cinzel', serif; /* Very cinematic, high-end font */
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif; 
             color: var(--gold-glow);
             letter-spacing: 2px;
+            font-weight: 400;
         }
 
         /* --- 3D Glass Header --- */
@@ -45,264 +41,344 @@
             align-items: center;
             padding: 0.8rem 5%;
             position: fixed;
-            top: 15px;
-            left: 5%;
-            width: 90%;
+            top: 15px; left: 5%; width: 90%;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 50px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             z-index: 1000;
         }
 
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
+        .brand-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo-img { height: 50px; width: 50px; border-radius: 50%; box-shadow: 0 0 15px rgba(226, 192, 115, 0.4); }
+        .logo { font-size: 1.5rem; font-family: 'Cinzel', serif; color: var(--text-light); text-transform: uppercase; }
+
+        .header-icons { display: flex; gap: 1.5rem; align-items: center; }
+        
+        .icon-btn {
+            color: var(--gold-glow); font-size: 1.4rem; cursor: pointer; position: relative; transition: transform 0.3s;
+        }
+        .icon-btn:hover { transform: scale(1.1); }
+        
+        #cart-badge {
+            position: absolute; top: -8px; right: -10px; background: var(--gold-glow); color: var(--bg-dark);
+            font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 50%; font-family: 'Montserrat', sans-serif;
         }
 
-        .brand-logo-img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(226, 192, 115, 0.4);
+        /* --- Elegant Sidebars (Menu & Cart) --- */
+        .sidebar {
+            height: 100vh; width: 350px; position: fixed; top: 0;
+            background: rgba(7, 11, 9, 0.95); backdrop-filter: blur(25px);
+            border-left: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border);
+            box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 2000;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex; flex-direction: column; padding: 4rem 2.5rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-family: 'Cinzel', serif;
-            color: var(--text-light);
-            text-transform: uppercase;
+        /* Menu slides from left, Cart slides from right */
+        #menu-sidebar { left: 0; transform: translateX(-100%); }
+        #menu-sidebar.active { transform: translateX(0); }
+        
+        #cart-sidebar { right: 0; transform: translateX(100%); }
+        #cart-sidebar.active { transform: translateX(0); }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: var(--gold-glow); cursor: pointer; font-weight: 200;
         }
 
-        .menu-icon {
-            font-size: 1.5rem;
-            color: var(--gold-glow);
-            cursor: pointer;
+        /* Menu Links - Smaller, thinner, elegant */
+        .nav-link {
+            text-decoration: none; font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-light);
+            margin: 1.2rem 0; letter-spacing: 3px; text-transform: uppercase; font-weight: 300;
+            transition: color 0.3s, transform 0.3s;
         }
+        .nav-link:hover { color: var(--gold-glow); transform: translateX(5px); }
+
+        /* Cart Styling */
+        .cart-item {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(226, 192, 115, 0.1); padding-bottom: 1rem;
+        }
+        .cart-item img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
+        .cart-item-details { flex-grow: 1; margin-left: 15px; }
+        .cart-item-details h4 { font-size: 0.9rem; margin-bottom: 3px; color: var(--text-light); }
+        .cart-item-details p { font-size: 0.8rem; color: var(--gold-glow); }
+        .remove-btn { color: #ff4c4c; cursor: pointer; font-size: 0.8rem; letter-spacing: 1px; }
+        
+        .cart-total { margin-top: auto; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; text-align: right; }
+        .cart-total h3 { font-size: 1.2rem; color: var(--text-light); }
+        .checkout-btn {
+            display: block; width: 100%; padding: 15px; margin-top: 1rem; background: var(--gold-glow); color: var(--bg-dark);
+            text-align: center; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .checkout-btn:hover { background: #fff; }
 
         /* --- Parallax Hero Section --- */
         .hero {
-            height: 100vh;
-            /* High-res background with parallax attachment */
-            background: linear-gradient(to bottom, rgba(7, 11, 9, 0.3), var(--bg-dark)), url("unnamed (5).webp") center/cover fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
+            height: 90vh; background: linear-gradient(to bottom, rgba(7, 11, 9, 0.3), var(--bg-dark)), url("unnamed (5).webp") center/cover fixed;
+            display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px;
         }
-
         .hero-glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            padding: 4rem 3rem;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.2);
-            max-width: 700px;
-            transform: translateY(20px);
+            background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border);
+            padding: 4rem 3rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); max-width: 700px;
         }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; font-weight: 300; color: #d1d1d1; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #d1d1d1;
-        }
-
-        /* --- Compact 4-Category Section --- */
-        .categories-section {
-            padding: 5rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-            text-shadow: 0 5px 20px rgba(226, 192, 115, 0.2);
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        /* The 3D Category Cards */
+        /* --- 4 Categories Section --- */
+        .categories-section { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.8rem; margin-bottom: 4rem; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        
         .cat-card {
-            position: relative;
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid rgba(255,255,255,0.05);
+            position: relative; height: 400px; border-radius: 20px; overflow: hidden; cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); transition: all 0.5s; border: 1px solid rgba(255,255,255,0.05);
         }
-
-        /* 3D Hover Physics */
         .cat-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(226, 192, 115, 0.3);
-            border: 1px solid var(--glass-border);
-            z-index: 2;
+            transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(226, 192, 115, 0.3); border: 1px solid var(--glass-border);
         }
-
-        .cat-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .cat-card:hover img {
-            transform: scale(1.1); /* Image zooms in slightly on hover */
-        }
-
-        /* Glass Text Overlay */
+        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .cat-card:hover img { transform: scale(1.1); }
+        
         .cat-info {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: rgba(10, 15, 12, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            transition: transform 0.4s ease;
+            position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(10, 15, 12, 0.7); backdrop-filter: blur(10px);
+            padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; transition: 0.4s;
         }
+        .cat-card:hover .cat-info { transform: translateY(-10px); border: 1px solid var(--gold-glow); }
+        .cat-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
 
-        .cat-card:hover .cat-info {
-            transform: translateY(-10px);
-            background: rgba(10, 15, 12, 0.85);
-            border: 1px solid var(--gold-glow);
+        /* --- Store Modal (The Pop-up with 4 items) --- */
+        #store-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px);
+            z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.4s;
         }
-
-        .cat-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+        #store-modal.active { display: flex; opacity: 1; }
+        
+        .modal-content {
+            background: var(--bg-dark); border: 1px solid var(--gold-glow); width: 100%; max-width: 1000px;
+            border-radius: 20px; padding: 3rem; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 0 50px rgba(226, 192, 115, 0.2);
         }
-
-        .cat-info p {
-            font-size: 0.9rem;
-            color: #b0b0b0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .modal-title { text-align: center; font-size: 2.2rem; margin-bottom: 2rem; }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .product-card { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 1rem; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
+        .product-card h4 { font-size: 1.1rem; color: var(--text-light); margin-bottom: 5px; }
+        .product-card .price { color: var(--gold-glow); font-size: 1.2rem; margin-bottom: 15px; }
+        .add-btn {
+            background: transparent; color: var(--gold-glow); border: 1px solid var(--gold-glow); padding: 8px 20px;
+            border-radius: 30px; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;
         }
+        .add-btn:hover { background: var(--gold-glow); color: var(--bg-dark); }
 
         /* --- Footer --- */
-        footer {
-            background: #040705;
-            text-align: center;
-            padding: 4rem 5%;
-            border-top: 1px solid #1a261f;
-        }
-
-        footer h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* --- Mobile Tweaks --- */
+        footer { background: #040705; text-align: center; padding: 4rem 5%; border-top: 1px solid #1a261f; }
+        footer h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.2rem; }
             header { top: 10px; width: 96%; left: 2%; padding: 0.5rem 5%; }
-            .logo { font-size: 1.1rem; }
+            .logo { font-size: 1rem; }
+            .sidebar { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sleek 3D Glass Header -->
+    <!-- Sleek Header with Cart & Menu Icons -->
     <header>
         <a href="#" class="brand-container">
-            <img src="1787309510667.png" alt="Le Boutique de Fleur Logo" class="brand-logo-img">
-            <span class="logo">Le Boutique de Fleur</span>
+            <img src="1787309510667.png" alt="Logo" class="brand-logo-img">
+            <span class="logo">Le Boutique</span>
         </a>
-        <!-- Kept the menu icon so you can hook up the sidebar later if needed -->
-        <div class="menu-icon">&#9776;</div>
+        <div class="header-icons">
+            <div class="icon-btn" onclick="toggleCart()">🛒<span id="cart-badge">0</span></div>
+            <div class="icon-btn" onclick="toggleMenu()">&#9776;</div>
+        </div>
     </header>
+
+    <!-- Navigation Sidebar -->
+    <div class="sidebar" id="menu-sidebar">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <h3 style="margin-bottom: 2rem;">Menu</h3>
+        <a href="#home" class="nav-link" onclick="toggleMenu()">Home</a>
+        <a href="#shop" class="nav-link" onclick="toggleMenu()">Collections</a>
+        <a href="#" class="nav-link" onclick="toggleMenu()">Our Story</a>
+        <a href="#contact" class="nav-link" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="sidebar" id="cart-sidebar">
+        <span class="close-btn" onclick="toggleCart()">&times;</span>
+        <h3 style="margin-bottom: 2rem;">Your Bag</h3>
+        <div id="cart-items-container" style="flex-grow: 1; overflow-y: auto;">
+            <p style="font-size: 0.9rem; color: #888;">Your cart is empty.</p>
+        </div>
+        <div class="cart-total">
+            <h3>Total: $<span id="cart-total-price">0</span></h3>
+            <button class="checkout-btn" onclick="alert('Ready for checkout! (Requires payment gateway integration)')">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Category Pop-up Modal -->
+    <div id="store-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="modal-title">Category Name</h2>
+            <div class="product-grid" id="modal-products">
+                <!-- Products injected by JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <!-- Parallax Hero -->
     <section id="home" class="hero">
         <div class="hero-glass-panel">
             <h1>Masterpiece Florals</h1>
-            <p>Exclusive, high-end botanical designs curated in the heart of Beirut. Experience floral artistry like never before.</p>
+            <p>Exclusive, high-end botanical designs curated in the heart of Beirut.</p>
         </div>
     </section>
 
-    <!-- 4 Compact Categories Section -->
-    <section class="categories-section">
+    <!-- 4 Categories Section -->
+    <section class="categories-section" id="shop">
         <h2 class="section-title">The Collections</h2>
-        
         <div class="category-grid">
-            
-            <!-- Category 1: Classic Whites -->
-            <div class="cat-card">
+            <div class="cat-card" onclick="openModal('classic')">
                 <img src="unnamed (4).jpg" alt="Classic White Flowers">
-                <div class="cat-info">
-                    <h3>The Classics</h3>
-                    <p>Timeless Elegance</p>
-                </div>
+                <div class="cat-info"><h3>The Classics</h3><p>Tap to View 4 Items</p></div>
             </div>
-
-            <!-- Category 2: Vibrant Blooms -->
-            <div class="cat-card">
-                <img src="unnamed (2).jpg" alt="Vibrant Pink and Purple Flowers">
-                <div class="cat-info">
-                    <h3>Vibrant Edge</h3>
-                    <p>Bold & Beautiful</p>
-                </div>
+            <div class="cat-card" onclick="openModal('vibrant')">
+                <img src="unnamed (2).jpg" alt="Vibrant Flowers">
+                <div class="cat-info"><h3>Vibrant Edge</h3><p>Tap to View 4 Items</p></div>
             </div>
-
-            <!-- Category 3: Autumn Harvest -->
-            <div class="cat-card">
+            <div class="cat-card" onclick="openModal('autumn')">
                 <img src="unnamed (6).webp" alt="Autumnal Bouquet">
-                <div class="cat-info">
-                    <h3>Golden Aura</h3>
-                    <p>Rich Autumn Tones</p>
-                </div>
+                <div class="cat-info"><h3>Golden Aura</h3><p>Tap to View 4 Items</p></div>
             </div>
-
-            <!-- Category 4: Miniature Vases -->
-            <div class="cat-card">
+            <div class="cat-card" onclick="openModal('petite')">
                 <img src="unnamed (3).jpg" alt="Miniature Vases">
-                <div class="cat-info">
-                    <h3>Petite Joy</h3>
-                    <p>Curated Assortments</p>
-                </div>
+                <div class="cat-info"><h3>Petite Joy</h3><p>Tap to View 4 Items</p></div>
             </div>
-
         </div>
     </section>
 
-    <!-- Minimalist Footer -->
-    <footer>
+    <!-- Footer -->
+    <footer id="contact">
         <h3>Le Boutique de Fleur</h3>
         <p>Sassine Square, Achrafieh, Beirut | +961 1 234 567</p>
-        <p style="margin-top: 2rem; font-size: 0.75rem; opacity: 0.4;">
-            &copy; 2026 Le Boutique de Fleur. All rights reserved.
-        </p>
+        <p style="margin-top: 2rem; font-size: 0.75rem; opacity: 0.4;">&copy; 2026 Le Boutique de Fleur. All rights reserved.</p>
     </footer>
+
+    <!-- E-Commerce Application Logic -->
+    <script>
+        // Sidebar Toggles
+        function toggleMenu() { document.getElementById('menu-sidebar').classList.toggle('active'); }
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
+
+        // Product Data Database (Using your uploaded images)
+        const productsDB = {
+            'classic': [
+                { id: 1, name: 'White Lilies', price: 70, img: 'unnamed (4).jpg' },
+                { id: 2, name: 'Pearl Rose', price: 85, img: 'unnamed (1).jpg' },
+                { id: 3, name: 'Ivory Orchids', price: 120, img: 'unnamed (5).jpg' },
+                { id: 4, name: 'Snow Hydrangeas', price: 65, img: 'unnamed (5).webp' }
+            ],
+            'vibrant': [
+                { id: 5, name: 'Vibrant Berry', price: 55, img: 'unnamed (2).jpg' },
+                { id: 6, name: 'Fuchsia Dream', price: 75, img: 'unnamed (6).jpg' },
+                { id: 7, name: 'Purple Majesty', price: 90, img: 'unnamed (3).jpg' },
+                { id: 8, name: 'Sunset Glow', price: 60, img: 'unnamed (6).webp' }
+            ],
+            'autumn': [
+                { id: 9, name: 'Golden Harvest', price: 65, img: 'unnamed (6).webp' },
+                { id: 10, name: 'Amber Leaves', price: 50, img: 'unnamed (1).jpg' },
+                { id: 11, name: 'Rustic Charm', price: 80, img: 'unnamed (6).jpg' },
+                { id: 12, name: 'Crimson Fall', price: 75, img: 'unnamed (4).jpg' }
+            ],
+            'petite': [
+                { id: 13, name: 'Joyful Minis', price: 25, img: 'unnamed (3).jpg' },
+                { id: 14, name: 'Desk Petals', price: 30, img: 'unnamed (5).jpg' },
+                { id: 15, name: 'Little Sunlight', price: 28, img: 'unnamed (2).jpg' },
+                { id: 16, name: 'Tiny Treasures', price: 35, img: 'unnamed (5).webp' }
+            ]
+        };
+
+        const categoryTitles = { 'classic': 'The Classics', 'vibrant': 'Vibrant Edge', 'autumn': 'Golden Aura', 'petite': 'Petite Joy' };
+
+        // Modal Logic
+        function openModal(category) {
+            document.getElementById('modal-title').innerText = categoryTitles[category];
+            const products = productsDB[category];
+            let html = '';
+            
+            products.forEach(p => {
+                html += `
+                    <div class="product-card">
+                        <img src="${p.img}" alt="${p.name}">
+                        <h4>${p.name}</h4>
+                        <div class="price">$${p.price}</div>
+                        <!-- Using JSON stringify to pass the product object properly -->
+                        <button class="add-btn" onclick='addToCart(${JSON.stringify(p)})'>Add to Cart</button>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('modal-products').innerHTML = html;
+            document.getElementById('store-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('store-modal').classList.remove('active');
+        }
+
+        // Cart Logic
+        let cart = [];
+
+        function addToCart(product) {
+            cart.push(product);
+            updateCartUI();
+            
+            // Pop out the cart so the user sees it was added!
+            document.getElementById('cart-sidebar').classList.add('active');
+            
+            // Optional: Auto close the category modal when they buy something
+            closeModal(); 
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-badge').innerText = cart.length;
+            
+            let html = '';
+            let total = 0;
+            
+            if(cart.length === 0) {
+                html = '<p style="font-size: 0.9rem; color: #888;">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    html += `
+                        <div class="cart-item">
+                            <img src="${item.img}" alt="${item.name}">
+                            <div class="cart-item-details">
+                                <h4>${item.name}</h4>
+                                <p>$${item.price}</p>
+                            </div>
+                            <span class="remove-btn" onclick="removeFromCart(${index})">X</span>
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('cart-items-container').innerHTML = html;
+            document.getElementById('cart-total-price').innerText = total;
+        }
+    </script>
 
 </body>
 </html>
